@@ -25,7 +25,8 @@ This project is an assessment test for dev candidates. The scope of the project 
     - explanations and highlights (where you are proud of yourself) of your output
     - the list of libraries that you used and why you used them.
     - explaining the challenges that you faced during the task.
-5. Your github homepage link
+    - Your github homepage link
+5. BONUS Deriverable: Any security bestpractice applied will
 
 ### Rules to follow
 1. All deliverables and code has to be submitted as a pull request to this repo
@@ -36,6 +37,7 @@ This project is an assessment test for dev candidates. The scope of the project 
 6. When accessing NOAA API, CAP/XML format needs to be used to retrieve the data using `Accept: application/cap+xml` instead of JSON
 7. Alertus API can be used with JSON
 8. Internet resources and guides can be used but copy and paste is strictly forbidden. Candidate must be able to explain the code and answer the related questions line by line during the following interview.
+9. The application needs to be platform independent: needs to work in Windows and Linux environments.
 
 ### Resources that you can use
 1. Alertus REST API Documentation (Swagger) Page: https://demo.alertustech.com/alertusmw/swag.jsp (Credentials will be shared by our HR Representative)
