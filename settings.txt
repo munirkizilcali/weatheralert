@@ -1,0 +1,7 @@
+# Location Information
+latitude = 39.7456
+longitude = -97.0892
+
+# Application Settings
+threshold_value = 80
+check_in_frequency = 30
