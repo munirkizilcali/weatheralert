@@ -26,7 +26,7 @@ This project is an assessment test for dev candidates. The scope of the project 
     - the list of libraries that you used and why you used them.
     - explaining the challenges that you faced during the task.
     - Your github homepage link
-5. BONUS Deriverable: Any security bestpractice applied will
+5. BONUS Deriverable: Any security best practice applied will help you to earn extra recognition over the selective process.
 
 ### Rules to follow
 1. All deliverables and code has to be submitted as a pull request to this repo
