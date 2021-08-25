@@ -34,7 +34,7 @@ This project is an assessment test for dev candidates. The scope of the project 
 3. Flask needs to be used as the application framework
 4. Bootstrap4 needs to be used for the user interface (the design doesn't have to be beautiful but it needs to show that you are able to use the bootstrap library
 5. SQLite needs to be used for database
-6. When accessing NOAA API, CAP/XML or vnd.noaa.dwml+xml formats needs to be used to retrieve the data using `Accept: application/cap+xml` instead of JSON
+6. When accessing NOAA API, CAP/XML or VND.NOAA.DWML+XML formats needs to be used to retrieve the data using `Accept: application/cap+xml` instead of JSON
 7. Alertus API can be used with JSON
 8. Internet resources and guides can be used but copy and paste is strictly forbidden. Candidate must be able to explain the code and answer the related questions line by line during the following interview.
 9. The application needs to be platform independent: needs to work in Windows and Linux environments.
