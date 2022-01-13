@@ -1,0 +1,14 @@
+<div id="update_data">
+    <h2>Data</h2>
+    <table>
+        {% for forecast in lst: %}
+        <tr>
+            {% if forecast['alert_id'] > 0 %} 
+                <td style="background-color: crimson;">{{ forecast }}</td>
+            {% else %}
+                <td>{{ forecast }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
