@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+{% block header_js %}
+<script type="text/javascript">
+    // handles refreshing the data table based on update_frequency variable    
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    (function(){
+        $.getJSON(
+            $SCRIPT_ROOT+"/_updateData", 
+            function(data) {
+                // /_updateData route sends new forecast data in JSON so that js can handle it
+                for (const element of data['lst']) {
+                    // conditional checks to see if any of the forecasts is higher than the given threshold value
+                    if (element['first_forecast'] > data['threshold_value'] ||
+                        element['second_forecast'] > data['threshold_value'] ||
+                        element['third_forecast'] > data['threshold_value']) {                          
+                            //replaces the tables by using tag id's
+                            $(alert_id_alert).text(element.alert_id)
+                            $(alert_generated_alert).text(element.alert_generated)
+                            $(timestamp_alert).text(element.timestamp)
+                            $(latitude_alert).text(element.latitude)
+                            $(longitude_alert).text(element.longitude)
+                            $(first_forecast_alert).text(element.first_forecast)
+                            $(second_forecast_alert).text(element.second_forecast)
+                            $(third_forecast_alert).text(element.third_forecast)
+                    } else {
+                            $(alert_id).text(element.alert_id)
+                            $(alert_generated).text(element.alert_generated)
+                            $(timestamp).text(element.timestamp)
+                            $(latitude).text(element.latitude)
+                            $(longitude).text(element.longitude)
+                            $(first_forecast).text(element.first_forecast)
+                            $(second_forecast).text(element.second_forecast)
+                            $(third_forecast).text(element.third_forecast)
+                    }
+                }
+            }
+        );
+        // update frequency, in milliseconds.
+        setTimeout(arguments.callee, update_frequency * 10000);
+    })();
+</script>
+{% endblock %}
+
+{% block body %}
+<!-- div that holds the settings for the project -->
+<div>
+    <h2 class="align-middle">Configuration</h2>
+    <form method="POST" class="w-50 m-10">
+        <div class="mb-3">
+            <label class="form-label" for="longitude">Longitude: {{ longitude }}</label><br>
+            <input class="form-control" type="number" step="any" id="longitude" name="longitude"><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="latitude">Latitude: {{ latitude }}</label><br>
+            <input class="form-control" type="number" step="any" id="latitude" name="latitude"><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="threshold value">Threshold Value: {{ threshold_value }}</label><br>
+            <input class="form-control" type="number" id="threshold_value" name="threshold_value"><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="check in frequency">Check in Frequency: {{ check_in_frequency }}</label><br>
+            <input class="form-control" type="number" id="check_in_frequency" name="check_in_frequency"><br>
+        </div>
+        <input class="btn btn-primary" type="submit" name="update_settings" value="Update"><br><br>
+    </form>
+</div>
+<!-- data table, where the forecast are displayed -->
+<div id="update_data">
+    <h2>Data</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Alert ID</th>
+                <th scope="col">Alert Generated</th>
+                <th scope="col">TimeStamp</th>
+                <th scope="col">Longitude</th>
+                <th scope="col">Latitude</th>
+                <th scope="col">First Forecast</th>
+                <th scope="col">Second Forecast</th>
+                <th scope="col">Third Forecast</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="alert_id_alert_1"></td>
+            </tr>
+            {% for forecast in lst: %}
+            <tr>
+                {% if forecast['first_forecast'] > threshold_value or
+                        forecast['second_forecast'] > threshold_value or
+                        forecast['third_forecast'] > threshold_value %} 
+                    <td id="alert_id_alert" class="table-danger">{{ forecast['alert_id'] }}</td>
+                    <td id="alert_generated_alert" class="table-danger">{{ forecast['alert_generated'] }}</td>
+                    <td id="timestamp_alert" class="table-danger">{{ forecast['timestamp'] }}</td>
+                    <td id="longitude_alert" class="table-danger">{{ forecast['longitude'] }}</td>
+                    <td id="latitude_alert" class="table-danger">{{ forecast['latitude'] }}</td>
+                    <td id="first_forecast_alert" class="table-danger">{{ forecast['first_forecast'] }}</td>
+                    <td id="second_forecast_alert" class="table-danger">{{ forecast['second_forecast'] }}</td>
+                    <td id="third_forecast_alert" class="table-danger">{{ forecast['third_forecast'] }}</td>
+                {% else %}
+                    <td id="alert_id" class="table-success">{{ forecast['alert_id'] }}</td>
+                    <td id="alert_generated" class="table-success">{{ forecast['alert_generated'] }}</td>
+                    <td id="timestamp" class="table-success">{{ forecast['timestamp'] }}</td>
+                    <td id="longitude" class="table-success">{{ forecast['longitude'] }}</td>
+                    <td id="latitude" class="table-success">{{ forecast['latitude'] }}</td>
+                    <td id="first_forecast" class="table-success">{{ forecast['first_forecast'] }}</td>
+                    <td id="second_forecast" class="table-success">{{ forecast['second_forecast'] }}</td>
+                    <td id="third_forecast" class="table-success">{{ forecast['third_forecast'] }}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
