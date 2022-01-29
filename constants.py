@@ -1,10 +1,16 @@
 import os
 
-DATABASE_URL = os.path.abspath(os.path.join(os.path.dirname(__file__), "weather_data.db"))
+LOG_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__), "alertus_logs.log"))
+
+DATABASE_URL = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "weather_data.db")
+)
 
 WEATHER_API_ENDPOINT = "https://api.weather.gov/points"
 
-ALERTUS_API_ENDPOINT = "https://demo.alertus.com/alertusmw/services/rest/activation/preset"
+ALERTUS_API_ENDPOINT = (
+    "https://demo.alertus.com/alertusmw/services/rest/activation/preset"
+)
 
 ALERTUS_USER = "devcandidate"
 

@@ -1,16 +1,25 @@
-from peewee import SqliteDatabase, DateTimeField, FloatField, IntegerField, BooleanField, Model
+from peewee import (
+    BooleanField,
+    DateTimeField,
+    FloatField,
+    IntegerField,
+    Model,
+    SqliteDatabase,
+)
+
 import constants
+
 
 class Weather(Model):
     timestamp = DateTimeField()
     latitude = FloatField()
     longitude = FloatField()
-    first_forcast = IntegerField()
-    second_forcast = IntegerField()
-    third_forcast = IntegerField()
+    first_forecast = IntegerField()
+    second_forecast = IntegerField()
+    third_forecast = IntegerField()
     alert_generated = BooleanField(default=False)
     alert_id = IntegerField(null=True)
-    
+
     class Meta:
         database = SqliteDatabase(constants.DATABASE_URL)
-        table_name = 'weather'
+        table_name = "weather"
