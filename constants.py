@@ -8,8 +8,12 @@ DATABASE_URL = os.path.abspath(
 
 WEATHER_API_ENDPOINT = "https://api.weather.gov/points"
 
-ALERTUS_API_ENDPOINT = (
+ALERTUS_POST_API_ENDPOINT = (
     "https://demo.alertus.com/alertusmw/services/rest/activation/preset"
+)
+
+ALERTUS_GET_ALERT_API_ENDPOINT = (
+    "https://demo.alertustech.com/alertusmw/services/rest/presets"
 )
 
 ALERTUS_USER = "devcandidate"

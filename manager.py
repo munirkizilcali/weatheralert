@@ -3,6 +3,7 @@ import threading
 import time
 
 import dateutil.parser
+from itsdangerous import json
 import requests
 from peewee import SqliteDatabase
 from playhouse.shortcuts import model_to_dict
@@ -11,7 +12,7 @@ import constants
 import db
 
 
-class WeatherDataUtil:
+class WeatherDataManager:
     def __init__(self):
         """
         Init the util, set default values,
@@ -23,8 +24,9 @@ class WeatherDataUtil:
         self.frequency = None
         self.thresh = None
         self.grid_url = None
-        self._set_settings()
+        self._init_settings()
 
+        # Init db
         self._db = SqliteDatabase(constants.DATABASE_URL)
         self._db.connect()
         self._db.create_tables([db.Weather])
@@ -54,8 +56,8 @@ class WeatherDataUtil:
                 settings_dict[split_line[0]] = split_line[-1]
         return {key: value for key, value in settings_dict.items() if key}
 
-    def _set_settings(self):
-        """Call the weather api, set class values and return the weather gird endpoint"""
+    def _init_settings(self):
+        """Call the weather api and set class attrs"""
         settings = self._parse_settings()
         lat, lng = settings.get("latitude"), settings.get("longitude")
         thresh, freq = settings.get("threshold_value"), settings.get(
@@ -67,8 +69,9 @@ class WeatherDataUtil:
             url=f"{constants.WEATHER_API_ENDPOINT}/{lat},{lng}",
         )
         if resp.ok:
-            grid_url = resp.json().get("properties").get("forecastHourly")
-
+            self._set_location(resp)
+            grid_url =  resp.json().get("properties").get("forecastHourly")
+            
         if not all([lat, lng, thresh, freq, grid_url]):
             raise Exception("Error setting values for WeatherDataUtil")
 
@@ -87,14 +90,19 @@ class WeatherDataUtil:
         )
         if resp.ok:
             forecast_list = resp.json().get("properties").get("periods")
-            grouped_forecasts = zip(*[iter(forecast_list)] * 3)
+            grouped_forecasts = zip(*[iter(forecast_list[:30])] * 3)
             for forecast1, forecast2, forecast3 in grouped_forecasts:
                 # Its not defined which of the three hours the timestap should refer to. Currently its the first
                 if (
                     not db.Weather.select()
-                    .where(db.Weather.timestamp == forecast1.get("startTime"))
+                    .where(
+                        (db.Weather.timestamp == self._parse_timestamp(forecast1.get("startTime"))) &
+                        (db.Weather.latitude == self.lat) &
+                        (db.Weather.longitude == self.lng)
+                        )
                     .exists()
                 ):
+                    
                     instance = db.Weather.create(
                         timestamp=self._parse_timestamp(forecast1.get("startTime")),
                         latitude=self.lat,
@@ -105,12 +113,74 @@ class WeatherDataUtil:
                     )
                     self._send_alert(instance)
 
+
     def update_settings(self, lat, lng, freq, thresh):
-        """Update the settings file from user input"""
+        """Update new cls attrs. If lat and lng have been changed, updated the gird_url"""
+        if float(lat) != float(self.lat) or float(lng) != float(self.lng):
+            resp = requests.get(
+                headers={"Accept": "application/cap+xml"},
+                url=f"{constants.WEATHER_API_ENDPOINT}/{lat},{lng}",
+                )
+            self._set_location(resp)
+            if resp.ok:
+                self.grid_url = resp.json().get("properties").get("forecastHourly")
+                for d in db.Weather.select():
+                    d.delete_instance()
+                    
         self.lat = float(lat)
         self.lng = float(lng)
         self.thresh = int(thresh)
         self.frequency = int(freq)
+
+    def _send_alert(self, model: db.Weather):
+        """
+        Check if any of the forcats temps are greater then the thresh, 
+        if so, update the model instance
+        """
+        if any([
+            model.first_forecast > int(self.thresh),
+            model.second_forecast > int(self.thresh),
+            model.third_forecast > int(self.thresh)
+            ]):
+            alert_data = self._get_first_preset_alert()            
+    
+            resp = requests.post(
+                headers={'Content-type': 'application/json'},
+                url=f"{constants.ALERTUS_POST_API_ENDPOINT}/{alert_data.get('id')}", 
+                auth=(constants.ALERTUS_USER, constants.ALERTUS_PASS),
+                )
+            if resp.ok:
+                model.alert_generated = True
+                model.alert_id = resp.json()
+                model.save()
+        else:
+            model.alert_generated = False
+            model.alert_id = None
+            model.save()
+
+    def get_latest_data(self):
+        return [model_to_dict(d) for d in db.Weather.select().order_by(db.Weather.id.desc()).limit(10)]
+
+    def _parse_timestamp(self, timestamp):
+        return dateutil.parser.parse(timestamp).strftime("%Y-%m-%d %H:%M")
+
+    def _get_first_preset_alert(self):
+        resp = requests.get(
+            headers={'Content-type': 'application/json'},
+            url=constants.ALERTUS_GET_ALERT_API_ENDPOINT, 
+            auth=(constants.ALERTUS_USER, constants.ALERTUS_PASS)
+            )
+        if resp.ok:
+            return resp.json()[0]
+    
+    def update_alerts(self):
+        for forecast in db.Weather.select():
+            self._send_alert(forecast)
+                
+    def _set_location(self, resp):
+        data = resp.json().get('properties').get("relativeLocation").get("properties")
+        self.city = data.get("city")
+        self.state = data.get("state")
 
     def get_settings(self):
         return {
@@ -119,22 +189,9 @@ class WeatherDataUtil:
             "threshold": self.thresh,
             "frequency": self.frequency,
         }
-
-    def _send_alert(self, model: db.Weather):
-        """
-        Check if any of the forcats temps are greater then the thresh, 
-        if so, update the model instance
-        """
-        if any([
-            model.first_forecast > self.thresh,
-            model.second_forecast > self.thresh,
-            model.third_forecast > self.thresh,
-            ]):
-            pass
-            
-
-    def get_latest_data(self):
-        return [model_to_dict(d) for d in db.Weather.select().limit(10)]
-
-    def _parse_timestamp(self, timestamp):
-        return dateutil.parser.parse(timestamp).strftime("%Y-%m-%d %H:%M")
+    
+    def get_location(self):
+        return {
+            "city": self.city, 
+            "state": self.state
+        }
