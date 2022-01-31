@@ -15,8 +15,8 @@ import db
 class WeatherDataManager:
     def __init__(self):
         """
-        Init the util, set default values,
-        create db table(if they exist already, this has not effect),
+        Init the manager, set default values,
+        create db table(if it already exists, this has not effect),
         and update the db with the latest data.
         """
         self.lat = None
@@ -178,6 +178,10 @@ class WeatherDataManager:
             self._send_alert(forecast)
                 
     def _set_location(self, resp):
+        if not resp.ok:
+            self.city = None
+            self.state = None
+            return
         data = resp.json().get('properties').get("relativeLocation").get("properties")
         self.city = data.get("city")
         self.state = data.get("state")

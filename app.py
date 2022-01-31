@@ -6,10 +6,15 @@ weather_data_manager = WeatherDataManager()
 
 app = Flask(__name__)
 
+@app.route("/error", methods=["GET"])
+def error():
+    return render_template("error.html")
 
 @app.route("/", methods=["GET"])
 def data():
     location = weather_data_manager.get_location()
+    if location.get("city") is None or location.get("state") is None:
+        return redirect(url_for("error"))
     data = weather_data_manager.get_latest_data()
     return render_template("data.html", data=data, location=location)
 
