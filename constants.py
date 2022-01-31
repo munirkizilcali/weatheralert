@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -23,4 +24,3 @@ ALERTUS_POST_API_ENDPOINT = (
 ALERTUS_GET_ALERT_API_ENDPOINT = (
     "https://demo.alertustech.com/alertusmw/services/rest/presets"
 )
-

@@ -21,5 +21,5 @@ class Weather(Model):
     alert_id = IntegerField(null=True)
 
     class Meta:
-        database = SqliteDatabase(constants.DATABASE_URL)
+        database = SqliteDatabase(constants.DATABASE_URL, check_same_thread=False)
         table_name = "weather"
