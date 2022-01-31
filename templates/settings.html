@@ -66,6 +66,7 @@ div.content {
             <h3>Settings</h3>
             <hr />
             <form method="post">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
               <div class="form-group">
                 <label for="exampleInputEmail1">Latitude</label>
                 <input name="latitude" class="form-control" value="{{ data['latitude']}}">

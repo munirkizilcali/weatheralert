@@ -1,10 +1,15 @@
-from crypt import methods
+import constants
 from manager import WeatherDataManager
 from flask import Flask, jsonify, redirect, url_for, request, render_template
+from flask_wtf.csrf import CSRFProtect
 
 weather_data_manager = WeatherDataManager()
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = constants.SECRET_KEY
+CSRFProtect(app)
+
+
 
 @app.route("/error", methods=["GET"])
 def error():
@@ -37,4 +42,5 @@ def settings():
         return render_template("settings.html", data=data)
                        
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=5000)        
+

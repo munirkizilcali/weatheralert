@@ -1,6 +1,14 @@
 import os
+from dotenv import load_dotenv
 
-LOG_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__), "alertus_logs.log"))
+load_dotenv()
+
+
+ALERTUS_USER = os.getenv("ALERTUS_USER")
+
+ALERTUS_PASS = os.getenv("ALERTUS_PASS")
+
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 DATABASE_URL = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "weather_data.db")
@@ -16,6 +24,3 @@ ALERTUS_GET_ALERT_API_ENDPOINT = (
     "https://demo.alertustech.com/alertusmw/services/rest/presets"
 )
 
-ALERTUS_USER = "devcandidate"
-
-ALERTUS_PASS = "gooWmJQe"

@@ -3,7 +3,6 @@ import threading
 import time
 
 import dateutil.parser
-from itsdangerous import json
 import requests
 from peewee import SqliteDatabase
 from playhouse.shortcuts import model_to_dict
@@ -143,7 +142,6 @@ class WeatherDataManager:
             model.third_forecast > int(self.thresh)
             ]):
             alert_data = self._get_first_preset_alert()            
-    
             resp = requests.post(
                 headers={'Content-type': 'application/json'},
                 url=f"{constants.ALERTUS_POST_API_ENDPOINT}/{alert_data.get('id')}", 

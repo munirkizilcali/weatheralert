@@ -10,7 +10,7 @@ python3 -m virtualenv env
 source env/bin/activate
 
 # Install reqs
-pip install -r requiremnets.txt
+pip install -r requirements.txt
 
 # Start app
 python app.py
