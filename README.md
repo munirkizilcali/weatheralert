@@ -50,3 +50,13 @@ This project is an assessment test for dev candidates. The scope of the project 
 4. The task will prove that you are able to code in python and self sufficient by reading online documentation. If you have a major design question which blocks you of completing the task, please send your question to our HR representative.
 
 Good Luck!
+
+##Running the flask application
+1. Clone the branch using git clone.
+2. Make sure the python version is `Python 3.7.2`.
+2. Make sure you are in the weatheralert folder and execute below command:
+`pip install -r requirements.txt`
+3. Run `main.py` file.
+4. Open the url generated in the terminal.
+
+

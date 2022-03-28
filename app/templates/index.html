@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+<form class="row" action="{{ url_for('index') }}", method="post">
+
+        <div class="col-sm-2">
+          <label for="long" class="form-label">Longitude</label>
+          <input type="text" class="form-control form-control-sm" name="longitude" id="long" value="{{data['longitude']}}">
+        </div>
+        <div class="col-sm-2">
+          <label for="lat" class="form-label">Latitude</label>
+          <input type="text" class="form-control form-control-sm" name="latitude" id="lat" value="{{data['latitude']}}" >
+        </div>
+        <div class="col-sm-3">
+          <label for="temp_threshold" class="form-label">Tempreature Threshold Value</label>
+          <input type="number" class="form-control form-control-sm" name="threshold_value" id="temp_threshold" value="{{data['threshold_value']}}">
+        </div>
+        <div class="col-sm-2">
+          <label for="check_in_frequency" class="form-label">Check in frequency</label>
+          <input type="number" class="form-control form-control-sm" name="check_in_frequency" id="check_in_frequency" value="{{data['check_in_frequency']}}">
+        </div>
+        <div class="col-sm-1" style="margin-top:20px">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </div>
+
+</form>
+<div style="margin-top: 10vh; text-align: center">
+    <h6>Previous Records</h6>
+</div>
+<div id="previous_records">
+    {{ table|safe }}
+</div>
+{% endblock %}
+
+
+{% block javascript %}
+    setInterval(updateTable, {{ frequency }})
+    function updateTable(){
+        console.log('Making ajax call');
+        console.log(" {{ url_for('get_table') }}");
+        $.ajax({
+          type : 'POST',
+            data: JSON.stringify({
+                'get' : 'get_table'
+            }),
+            contentType: 'application/json; charset=utf-8',
+            url : "{{url_for('get_table')}}",
+            success: function(res) {
+                $('#previous_records').empty();
+                $('#previous_records').append(res);
+            }
+
+        });
+    }
+{% endblock %}

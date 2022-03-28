@@ -1,0 +1,28 @@
+<table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Time Stamp</th>
+          <th scope="col">Latitude</th>
+          <th scope="col">Longitude</th>
+          <th scope="col">First Forecast</th>
+            <th scope="col">First Forecast</th>
+            <th scope="col">First Forecast</th>
+            <th scope="col">Alert Generated</th>
+            <th scope="col">Alert ID</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for rec in li %}
+        <tr>
+          <th scope="row">{{ rec['timestamp'] }}</th>
+          <td>{{rec['lat']}}</td>
+            <td>{{rec['long']}}</td>
+            <td>{{rec['first_forecast']}}</td>
+            <td>{{rec['second_forecast']}}</td>
+            <td>{{rec['third_forecast']}}</td>
+            <td>{{rec['alert_generated']}}</td>
+            <td>{{rec['alert_id']}}</td>
+        </tr>
+       {% endfor %}
+      </tbody>
+</table>
