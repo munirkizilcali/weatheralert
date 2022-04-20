@@ -1,0 +1,90 @@
+{% extends 'base.html' %} {% block title %} Data {% endblock %} {% block content
+%}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Timestamp</th>
+        <th>Longitue</th>
+        <th>Latitude</th>
+        <th>First Forecast</th>
+        <th>Second Forecast</th>
+        <th>Third Forecast</th>
+        <th>Alert Generated</th>
+        <th>Alert ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for forecast in forecasts %}
+    <tr class="{{'red' if forecast.alert_generated else 'table_row'}}">
+        <td>{{ forecast.timestamp }}</td>
+        <td>{{ forecast.longitude }}</td>
+        <td>{{ forecast.latitude }}</td>
+        <td>{{ forecast.first_forecast }}</td>
+        <td>{{ forecast.second_forecast }}</td>
+        <td>{{ forecast.third_forecast }}</td>
+        <td>{{ forecast.alert_generated }}</td>
+        <td>{{ forecast.alert_id }}</td>
+    </tr>
+
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+
+    {% endfor %}
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        setInterval(function () {
+            $.ajax({
+                url: "/forecast/",
+                type: "GET",
+                success: function (data) {
+                    let data_object = JSON.parse(data);
+                    let row_class = "table_row";
+                    if (data_object.alert_generated === true) {
+                        data_object.alert_generated = 1;
+                        row_class = "red";
+                    } else {
+                        data_object.alert_generated = 0;
+                    }
+                    if (data_object.alert_id == null) {
+                        data_object.alert_id = "NULL";
+                    }
+                    const new_row =
+                        "<tr class=" + row_class + "><td>" +
+                        data_object.timestamp +
+                        "</td><td>" +
+                        data_object.longitude +
+                        "</td><td>" +
+                        data_object.latitude +
+                        "</td><td>" +
+                        data_object.first_forecast +
+                        "</td><td>" +
+                        data_object.second_forecast +
+                        "</td><td>" +
+                        data_object.third_forecast +
+                        "</td><td>" +
+                        data_object.alert_generated +
+                        "</td><td>" +
+                        data_object.alert_id +
+                        "</td></tr>" +
+                        "<style> .red { color: red; } </style>";
+
+
+                    if ($("table tbody tr").length == 10) {
+                        $("table tbody tr:last").remove()
+                    }
+
+                    $("tbody").prepend(new_row);
+                },
+            });
+        }, "{{settings.check_in_frequency}}" * 1000);
+    });
+</script>
+
+{% endblock %}

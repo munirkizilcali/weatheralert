@@ -1,0 +1,163 @@
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:41:27] "GET / HTTP/1.1" 200 -
+ERROR:weather_alert:Error while getting forecasts from NOAA API. Invalid response code from NOAA API.500, details: {
+    "correlationId": "90f794d",
+    "title": "Unexpected Problem",
+    "type": "https://api.weather.gov/problems/UnexpectedProblem",
+    "status": 500,
+    "detail": "An unexpected problem has occurred.",
+    "instance": "https://api.weather.gov/requests/90f794d"
+}
+ERROR:weather_alert:Could not fetch new forecast
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:41:39] "[35m[1mGET /forecast/ HTTP/1.1[0m" 500 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426110.550919, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118437}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:41:50] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426118.985449, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118438}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:41:58] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:42:02] "GET /settings/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:42:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:42:06] "GET /settings/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:42:07] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426137.996276, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118439}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:42:18] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426148.023619, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118440}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:42:28] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:42:31] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426162.57375, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118441}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:42:42] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:43:08] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426199.570653, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118442}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:43:19] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426209.166179, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118443}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:43:29] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:43:30] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426220.941236, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118444}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:43:40] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426230.866471, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118445}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:43:50] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:45:43] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426355.364548, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118446}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:45:55] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426364.321452, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118447}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:46:04] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:46:24] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426395.318124, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118448}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:46:35] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426405.354707, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118449}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:46:45] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650426415.280141, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118450}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:46:55] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:48:08] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:56:55] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:58:38] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650427129.822405, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118452}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:58:49] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650427139.35994, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118453}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:58:59] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650427149.298064, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118454}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:59:09] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650427159.234771, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 74, 'second_forecast': 74, 'third_forecast': 73, 'alert_generated': True, 'alert_id': 118455}
+INFO:werkzeug:127.0.0.1 - - [19/Apr/2022 23:59:19] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 07:30:08] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650454221.567568, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 71, 'second_forecast': 73, 'third_forecast': 75, 'alert_generated': True, 'alert_id': 118471}
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 07:30:21] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650454229.142556, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 71, 'second_forecast': 73, 'third_forecast': 75, 'alert_generated': True, 'alert_id': 118472}
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 07:30:29] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650454239.174681, 'longitude': -80.343601, 'latitude': 25.877369, 'first_forecast': 71, 'second_forecast': 73, 'third_forecast': 75, 'alert_generated': True, 'alert_id': 118473}
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 07:30:39] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+ERROR:weather_alert:Error while getting forecasts from NOAA API. Invalid response code from NOAA API.500, details: {
+    "correlationId": "141e4c7c",
+    "title": "Unexpected Problem",
+    "type": "https://api.weather.gov/problems/UnexpectedProblem",
+    "status": 500,
+    "detail": "An unexpected problem has occurred.",
+    "instance": "https://api.weather.gov/requests/141e4c7c"
+}
+ERROR:weather_alert:Could not fetch new forecast
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:38:23] "[35m[1mGET /forecast/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:38:23] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:38:47] "GET /settings/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:38:49] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:39:22] "GET /settings/ HTTP/1.1" 200 -
+INFO:weather_alert:Settings updated successfully, new settings: ImmutableMultiDict([('latitude', '25.877353'), ('longitude', '-80.130049'), ('threshold_value', '80'), ('check_in_frequency', '10')])
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:39:26] "POST /settings/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:39:27] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650458379.01588, 'longitude': -80.130049, 'latitude': 25.877353, 'first_forecast': 74, 'second_forecast': 75, 'third_forecast': 76, 'alert_generated': False, 'alert_id': None}
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:39:39] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650458387.601904, 'longitude': -80.130049, 'latitude': 25.877353, 'first_forecast': 74, 'second_forecast': 75, 'third_forecast': 76, 'alert_generated': False, 'alert_id': None}
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:39:47] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650458397.618505, 'longitude': -80.130049, 'latitude': 25.877353, 'first_forecast': 74, 'second_forecast': 75, 'third_forecast': 76, 'alert_generated': False, 'alert_id': None}
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:39:57] "GET /forecast/ HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650458407.616536, 'longitude': -80.130049, 'latitude': 25.877353, 'first_forecast': 74, 'second_forecast': 75, 'third_forecast': 76, 'alert_generated': False, 'alert_id': None}
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:40:07] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:40:12] "GET /settings/ HTTP/1.1" 200 -
+INFO:weather_alert:Settings updated successfully, new settings: ImmutableMultiDict([('latitude', '25.877353'), ('longitude', '-80.130049'), ('threshold_value', '80'), ('check_in_frequency', '10')])
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:40:17] "POST /settings/ HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+WARNING:weather_alert:settings.txt file not found. Creating new file.
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:41:16] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650458536.885086, 'longitude': -80.130049, 'latitude': 25.877353, 'first_forecast': 74, 'second_forecast': 75, 'third_forecast': 76, 'alert_generated': False, 'alert_id': None}
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:42:16] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:42:41] "GET /settings/ HTTP/1.1" 200 -
+INFO:weather_alert:Settings updated successfully, new settings: ImmutableMultiDict([('latitude', '25.877353'), ('longitude', '-80.130049'), ('threshold_value', '70'), ('check_in_frequency', '60')])
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:42:46] "POST /settings/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:42:48] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650458629.725356, 'longitude': -80.130049, 'latitude': 25.877353, 'first_forecast': 74, 'second_forecast': 75, 'third_forecast': 76, 'alert_generated': True, 'alert_id': 118474}
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:43:49] "GET /forecast/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:43:57] "GET /settings/ HTTP/1.1" 200 -
+INFO:weather_alert:Settings updated successfully, new settings: ImmutableMultiDict([('latitude', '25.877353'), ('longitude', '-80.130049'), ('threshold_value', '70'), ('check_in_frequency', '60')])
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:44:07] "POST /settings/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 08:44:09] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://localhost:8000 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 194-019-107
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 09:07:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 09:07:20] "GET /settings/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 09:07:21] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 09:07:23] "GET /settings/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 09:07:25] "GET / HTTP/1.1" 200 -
+INFO:weather_alert:New forecast fetched successfully, new forecast: {'timestamp': 1650460106.877767, 'longitude': -80.130049, 'latitude': 25.877353, 'first_forecast': 74, 'second_forecast': 75, 'third_forecast': 76, 'alert_generated': True, 'alert_id': 118476}
+INFO:werkzeug:127.0.0.1 - - [20/Apr/2022 09:08:26] "GET /forecast/ HTTP/1.1" 200 -

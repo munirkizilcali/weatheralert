@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block title %} Settings {% endblock %} {% block
+content %}
+
+<form method="post">
+    <div class="form-group">
+        <label for="title">Latitude</label>
+        <input
+                class="form-control"
+                name="latitude"
+                placeholder="Latitude"
+                type="text"
+                value="{{settings.latitude}}"
+        />
+    </div>
+    <div class="form-group">
+        <label for="title">Longitude</label>
+        <input
+                class="form-control"
+                name="longitude"
+                placeholder="Longitude"
+                type="text"
+                value="{{settings.longitude}}"
+        />
+    </div>
+    <div class="form-group">
+        <label for="title">Threshold Value</label>
+        <input
+                class="form-control"
+                name="threshold_value"
+                placeholder="Threshold Value"
+                type="number"
+                value="{{settings.threshold_value}}"
+        />
+    </div>
+    <div class="form-group">
+        <label for="title">Check in Frequency</label>
+        <input
+                class="form-control"
+                name="check_in_frequency"
+                placeholder="Check in Frequency"
+                type="number"
+                value="{{settings.check_in_frequency}}"
+        />
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}
